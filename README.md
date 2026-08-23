@@ -11,7 +11,7 @@
 
 Production-style Batch ETL pipeline for transforming large-scale vendor payment data into validated Silver datasets and analytics-ready Gold marts.
 
-This project is part of the **Vendor Payments Data Engineering Portfolio** and provides the trusted Batch foundation used by downstream orchestration, API serving, cloud publishing, dashboards, and web applications.
+This repository is the Batch ETL and analytics-processing layer of the **Vendor Payments Data Engineering Portfolio**. It produces trusted Silver and Gold outputs that are orchestrated by Airflow and consumed by downstream Cloud, API, and analytics components.
 
 ---
 
@@ -44,11 +44,9 @@ The pipeline follows this workflow:
 Raw Data Source
 → Data Readiness Checks
 → Silver Transformation
-→ Gold Mart Build
 → Silver Output Validation
-→ Gold Output Validation
-→ Runtime Metadata
-→ Automated Testing and CI
+→ Gold Mart Build & Validation
+→ Execution Summary & Quality Assurance
 ```
 
 ### Layer Responsibilities
@@ -384,7 +382,23 @@ python scripts/pipeline/run_pipeline.py --sample
 python -m pytest -v
 ```
 
-![Project 1 CI Success](assets/cicd/project1-batch-etl-ci-success.png)
+![ETL CI Success](assets/06_etl_ci_success.png)
+
+---
+
+## 📸 Final Execution Evidence
+
+```text
+00_validated-batch-etl-architecture.png
+01_full-batch-etl-execution-evidence.png
+02_pipeline-summary-overview.png
+03_silver-validation-summary.png
+04_gold-validation-summary.png
+05_tests-and-code-quality-evidence.png
+06_etl_ci_success.png
+```
+
+Together, these screenshots cover architecture, full execution, runtime metadata, Silver validation, Gold validation, local automated quality checks, and GitHub Actions CI.
 
 ---
 
@@ -394,13 +408,13 @@ python -m pytest -v
 vendor-payments-etl-analytics/
 │
 ├── assets/
-│   ├── cicd/
 │   ├── 00_validated-batch-etl-architecture.png
 │   ├── 01_full-batch-etl-execution-evidence.png
 │   ├── 02_pipeline-summary-overview.png
 │   ├── 03_silver-validation-summary.png
 │   ├── 04_gold-validation-summary.png
-│   └── 05_tests-and-code-quality-evidence.png
+│   ├── 05_tests-and-code-quality-evidence.png
+│   └── 06_etl_ci_success.png
 │
 ├── data/
 │   ├── raw/
@@ -495,6 +509,34 @@ reports/gold_output_validation_report_sample.txt
 
 ---
 
+## ☁️ Airflow Integration
+
+The ETL pipeline remains independently runnable, while the integrated Vendor Payments platform uses Apache Airflow to coordinate the Batch execution lifecycle.
+
+```text
+Check Batch ETL readiness
+→ Run Batch ETL pipeline
+→ Validate Silver output
+→ Validate Gold outputs
+→ Upload trusted Gold marts to S3
+→ Continue Cloud and Redshift processing
+```
+
+This keeps ownership clear:
+
+```text
+vendor-payments-etl-analytics
+→ Batch transformation and output validation
+
+vendor-payments-airflow-orchestration
+→ execution order, dependency coordination,
+  downstream validation, and Cloud orchestration
+```
+
+The Batch transformation logic stays in this repository; Airflow invokes it rather than duplicating it.
+
+---
+
 ## 🧠 Key Engineering Decisions
 
 ### Why use chunk-based processing?
@@ -544,32 +586,45 @@ The JSON execution summary converts pipeline outputs, validation results, and ru
 ## 🔗 Role in the Vendor Payments Data Platform
 
 ```text
-Project 1 — Batch ETL Foundation
-Project 2 — API Serving Layer
-Project 3 — Kafka Streaming Pipeline
-Project 4 — Airflow Orchestration
-Project 5 — Cloud Data Platform
+vendor-payments-etl-analytics
+→ Batch ETL and analytics processing
+
+vendor-payments-streaming-pipeline
+→ Kafka event ingestion, validation, and deduplication
+
+vendor-payments-airflow-orchestration
+→ Workflow orchestration and cross-platform validation
+
+vendor-payments-cloud-data-platform
+→ Amazon S3, Athena, and Redshift analytics platform
+
+vendor-payments-api-serving
+→ FastAPI serving layer for trusted analytics
+
+vendor-payments-analytics
+→ React and analytics consumption layer
 ```
 
-Project 1 provides trusted Silver datasets and Gold analytics marts for:
+The Batch ETL repository provides trusted Silver datasets and Gold analytics marts for:
 
-* Project 2 API responses
-* Project 4 Airflow orchestration
-* Project 5 S3 and Athena publishing
+* Airflow orchestration
+* S3, Athena, and Redshift cloud processing
+* FastAPI serving
 * Power BI dashboards
-* Future browser-based analytics applications
+* React analytics applications
 
 ---
 
 ## 🛣️ Planned Development
 
-* Power BI dashboard integration
-* Web analytics application
-* Cloud-backed input and output paths
-* Additional data quality thresholds
-* Incremental processing strategy
-* Persistent execution history
-* Centralized pipeline observability
+The current portfolio version is intentionally bounded and reproducible. Possible production-oriented extensions include:
+
+* Incremental or partition-aware Batch processing
+* Persistent execution-history storage
+* Configurable data-quality thresholds
+* Centralized observability and alerting
+* Cloud-backed input paths for larger production workloads
+* Additional performance and memory profiling
 
 ---
 
@@ -580,9 +635,12 @@ This project is not only a CSV transformation script.
 It demonstrates how a production-style Batch ETL workflow can validate large raw datasets, preserve row-level traceability, generate analytics-ready marts, verify output quality, expose runtime metadata, and enforce automated quality checks.
 
 ```text
-Raw Data
+Raw Vendor Payments
 → Validated Silver
 → Analytics-ready Gold
 → Runtime Metadata
-→ Trusted Downstream Consumption
+→ Airflow Orchestration
+→ Cloud / API / Analytics Consumption
 ```
+
+````

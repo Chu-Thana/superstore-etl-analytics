@@ -1,4 +1,4 @@
-name: CI - Project 1 Vendor Payments ETL
+name: CI - Vendor Payments ETL Analytics
 
 on:
   push:

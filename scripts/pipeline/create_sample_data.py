@@ -69,7 +69,7 @@ def create_stream_sample_data() -> None:
     """
     Create a larger sample dataset for Kafka streaming simulation.
 
-    This file is intended for Project 3 streaming demos. It uses the same
+    This file is intended for Kafka streaming demos. It uses the same
     raw schema as the original dataset and samples 100,000 rows from the
     full Vendor Payments raw dataset.
     """
@@ -114,7 +114,7 @@ def create_silver_stream_sample_data() -> None:
     """
     Transform the 100,000-row raw stream sample into silver format.
 
-    This output is intended for Project 3 Kafka streaming demos so the
+    This output is intended for Kafka streaming demos so the
     streaming pipeline consumes cleaned silver-level Vendor Payments records
     instead of raw data.
     """

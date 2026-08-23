@@ -1,7 +1,7 @@
 TIME COVERAGE & FRESHNESS REPORT
 ================================================================================
 
-Data path: E:\dev\project1_etl\data\raw\Vendor_Payments.csv
+Data path: E:\dev\vendor-payments-etl-analytics\data\raw\Vendor_Payments.csv
 Total rows checked: 3,354,965
 Chunk size: 100,000
 

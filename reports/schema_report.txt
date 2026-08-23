@@ -1,7 +1,7 @@
 SCHEMA REPORT
 ================================================================================
 
-Data path: E:\dev\project1_etl\data\raw\Vendor_Payments.csv
+Data path: E:\dev\vendor-payments-etl-analytics\data\raw\Vendor_Payments.csv
 Sample rows checked: 100,000
 Expected column count: 33
 Actual column count: 33

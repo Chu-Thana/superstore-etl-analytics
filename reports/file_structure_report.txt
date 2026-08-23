@@ -1,7 +1,7 @@
 FILE STRUCTURE REPORT
 ================================================================================
 
-File path: E:\dev\project1_etl\data\raw\Vendor_Payments.csv
+File path: E:\dev\vendor-payments-etl-analytics\data\raw\Vendor_Payments.csv
 File size: 1273.84 MB
 Detected encoding used: utf-8-sig
 Detected delimiter: ','

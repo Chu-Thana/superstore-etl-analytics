@@ -1,7 +1,7 @@
 DATA TYPE & PARSING REPORT
 ================================================================================
 
-Data path: E:\dev\project1_etl\data\raw\Vendor_Payments.csv
+Data path: E:\dev\vendor-payments-etl-analytics\data\raw\Vendor_Payments.csv
 Total rows checked: 3,354,965
 Chunk size: 100,000
 
@@ -73,3 +73,4 @@ Vouchers Paid: 0 nulls (0.0000%)
 data_as_of: 0 nulls (0.0000%)
 data_loaded_at: 0 nulls (0.0000%)
 Purchase Order Date: 1,318,993 nulls (39.3147%)
+

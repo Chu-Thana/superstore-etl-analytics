@@ -217,7 +217,7 @@ Recommended partitioning:
 
 **Final status:** READY WITH DESIGN WARNINGS
 
-The dataset is ready for Project 1 refactor because:
+The dataset is ready for ETL pipeline refactor because:
 
 - The file structure is valid.
 - Schema is stable.
@@ -285,7 +285,7 @@ Focus on:
 
 ## Conclusion
 
-The new dataset is suitable for refactoring Project 1 into a larger-scale, production-style ETL and analytics pipeline.
+The new dataset is suitable for refactoring the Batch ETL pipeline into a larger-scale, production-style ETL and analytics pipeline.
 
 The project should shift from the old Superstore sales analytics story to:
 
